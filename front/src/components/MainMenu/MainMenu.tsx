@@ -12,6 +12,7 @@ export const MainMenu: React.FC<Props> = () => {
     <nav className={b()}>
       <a href="/catalog">Каталог</a>
       <a href="/ref">Справочники</a>
+      <a href="/about">О нас</a>
     </nav>
   )
 }

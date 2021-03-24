@@ -1,3 +1,19 @@
 .main-menu {
+  display: flex;
+  justify-content: center;
+  background-color: #d8d8d8;
+  color: #000;
+  a {
+    margin: 5px 20px;
+    text-decoration: none;
+    &:link,
+    &:visited,
+    &:hover,
+    &:active,
+    &:focus
+     {
+      color: inherit;
+    }
+  }
 
 }

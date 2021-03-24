@@ -1,3 +1,5 @@
 .main-layout {
-
+  &__main {
+    background-color: #d4a1a1;
+  }
 }
