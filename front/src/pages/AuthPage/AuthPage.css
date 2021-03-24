@@ -1,1 +1,8 @@
-.auth-page {}
+.auth-page {
+  width: 100%;
+  &__form {
+    padding-top: 50px;
+    display: flex;
+    justify-content: center;
+  }
+}

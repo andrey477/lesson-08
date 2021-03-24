@@ -12,7 +12,7 @@ export const Header: React.FC<Props> = () => (
     <a className={b('title')}
       href={'/'}
     >
-      Catalog
+      Cat<span className={b('title', {big: true})}>a</span>log
     </a>
   </header>
 )
