@@ -6,6 +6,7 @@ import { AboutPage } from './AboutPage/AboutPage'
 import { AuthPage } from './AuthPage/AuthPage'
 import { CatalogPage } from './CatalogPage/CatalogPage'
 import { Error404 } from './Error404/Error404'
+import {RegistrationPage} from "./RegistrationPage/RegistrationPage";
 
 interface Props {
 }
@@ -15,6 +16,7 @@ export const Routes: React.FC<Props> = () => {
     <Switch>
       <Redirect exact from={'/'} to={'/catalog'} />
       <Page path={'/auth'} layout={AuthLayout} component={AuthPage} />
+      <Page path={'/registration'} layout={AuthLayout} component={RegistrationPage} />
       <Page secured path={'/catalog'} component={CatalogPage} />
       <Page secured path={'/about'} component={AboutPage} />
       <Page exact secured path={'/ref'} component={() => 'Справочники'} />

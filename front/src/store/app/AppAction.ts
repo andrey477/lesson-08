@@ -1,5 +1,6 @@
 export enum AppAction {
   Fetch='app/Fetch',
   FetchSuccess = 'app/FetchSuccess',
-  FetchError = 'app/FetchError'
+  FetchError = 'app/FetchError',
+  FetchRegisterSuccess = 'app/FetchRegisterSuccess',
 }

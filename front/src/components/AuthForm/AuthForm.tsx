@@ -10,6 +10,7 @@ import {Button} from "../Button/Button";
 import {connect, MapDispatchToProps, MapStateToProps} from "react-redux";
 import {RootState} from "../../store/types";
 import {appActions} from "../../store/app/action";
+import {InputType} from "../Input/InputType";
 
 interface StateProps {
   loading: boolean;
@@ -69,6 +70,7 @@ const AuthFormPresenter: React.FC<Props> = ({loading, errorText, appLogin}) => {
         onChange={handleChange}
         error={errors?.password}
         disable={loading}
+        htmlType={InputType.Password}
       />
       {!!errorText && <p className={b('error')}>{errorText}</p>}
       <div>
