@@ -1,6 +1,7 @@
 import {AppState} from "./types";
 import {AppAction} from "./AppAction";
 import {App} from "../../types/app";
+import {apiAuthLogin} from "../../api/auth";
 
 const appFetch = (): AppState.Action.Fetch => ({
   type: AppAction.Fetch
@@ -17,5 +18,15 @@ const appFetchError = (payload: string): AppState.Action.FetchError => ({
 })
 
 export const appActions: AppState.ActionThunk = {
+  appLogin: params => async (dispatch) => {
+    dispatch(appFetch())
 
+    try {
+      const tokenPair = await apiAuthLogin(params)
+      dispatch(appFetchSuccess(tokenPair))
+    }
+    catch (err) {
+      dispatch(appFetchError('Ошибка авторизации'))
+    }
+  }
 }
