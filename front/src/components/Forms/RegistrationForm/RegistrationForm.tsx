@@ -1,15 +1,17 @@
-import {AppState} from "../../store/app/types";
+import {AppState} from "../../../store/app/types";
 import block from "bem-cn";
 import * as Yup from "yup";
-import {User} from "../../types/user";
+import {User} from "../../../types/user";
 import {connect, MapDispatchToProps, MapStateToProps} from "react-redux";
-import {RootState} from "../../store/types";
-import {appActions} from "../../store/app/action";
+import {RootState} from "../../../store/types";
+import {appActions} from "../../../store/app/action";
 import {useFormik} from "formik";
 import React, {MouseEventHandler} from "react";
-import {Input} from "../Input/Input";
-import {InputType} from "../Input/InputType";
-import {Button} from "../Button/Button";
+import {Link} from 'react-router-dom'
+import {Input} from "../../Input/Input";
+import {InputType} from "../../Input/InputType";
+import {Button} from "../../Button/Button";
+import './RegistrationForm.css'
 
 interface StateProps {
   loading: boolean;
@@ -95,9 +97,11 @@ const RegistrationFormPresenter: React.FC<Props> = ({loading, errorText, appRegi
         htmlType={InputType.Password}
       />
       {!!errorText && <p className={b('error')}>{errorText}</p>}
-      <div>
-        <Button text={'Войти'} disabled={loading}/>
-        <Button text={'Зарегистрироваться'} onClick={handlerSubmit} disabled={loading}/>
+      <div className={b('btn-container')}>
+        <Link to={'/auth'} className={b('link')}>
+          <Button className={b('button')} text={'Войти'} disabled={loading}/>
+        </Link>
+        <Button className={b('button')} text={'Зарегистрироваться'} onClick={handlerSubmit} disabled={loading}/>
       </div>
     </form>
   )

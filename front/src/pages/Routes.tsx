@@ -17,7 +17,7 @@ export const Routes: React.FC<Props> = () => {
       <Redirect exact from={'/'} to={'/catalog'} />
       <Page path={'/auth'} layout={AuthLayout} component={AuthPage} />
       <Page path={'/registration'} layout={AuthLayout} component={RegistrationPage} />
-      <Page secured path={'/catalog'} component={CatalogPage} />
+      <Page exact secured path={'/catalog'} component={CatalogPage} />
       <Page secured path={'/about'} component={AboutPage} />
       <Page exact secured path={'/ref'} component={() => 'Справочники'} />
       <Page secured path={'/ref/authors'} component={() => 'Авторы'} />

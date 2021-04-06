@@ -1,7 +1,8 @@
 import block from "bem-cn";
 import React from "react";
-import {AuthForm} from "../../components/AuthForm/AuthForm";
-import {RegistrationForm} from "../../components/RegistrationForm/RegistrationForm";
+import {AuthForm} from "../../components/Forms/AuthForm/AuthForm";
+import {RegistrationForm} from "../../components/Forms/RegistrationForm/RegistrationForm";
+import './RegistrationPage.css'
 
 interface Props {
 }

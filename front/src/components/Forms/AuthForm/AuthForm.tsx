@@ -1,16 +1,18 @@
 import React, {MouseEventHandler} from "react";
 import block from "bem-cn";
 import './AuthForm.css'
-import {AppState} from "../../store/app/types";
+import {AppState} from "../../../store/app/types";
+import {Link} from 'react-router-dom'
 import * as Yup from 'yup'
-import {Auth} from "../../types/auth";
+import {Auth} from "../../../types/auth";
 import {useFormik} from "formik";
-import {Input} from "../Input/Input";
-import {Button} from "../Button/Button";
+import {Input} from "../../Input/Input";
+import {Button} from "../../Button/Button";
 import {connect, MapDispatchToProps, MapStateToProps} from "react-redux";
-import {RootState} from "../../store/types";
-import {appActions} from "../../store/app/action";
-import {InputType} from "../Input/InputType";
+import {RootState} from "../../../store/types";
+import {appActions} from "../../../store/app/action";
+import {InputType} from "../../Input/InputType";
+import '../Forms.css'
 
 interface StateProps {
   loading: boolean;
@@ -27,6 +29,7 @@ interface OwnProps {
 type Props = OwnProps & StateProps & DispatchProps
 
 const b = block('auth-form')
+const forms = block('forms')
 
 const schema: Yup.SchemaOf<Auth.Login.Params> = Yup.object().shape(({
   login: Yup.string().required(),
@@ -34,7 +37,7 @@ const schema: Yup.SchemaOf<Auth.Login.Params> = Yup.object().shape(({
 }))
 
 const AuthFormPresenter: React.FC<Props> = ({loading, errorText, appLogin}) => {
-  const { errors, values, submitForm, handleChange } = useFormik<Auth.Login.Params>({
+  const {errors, values, submitForm, handleChange} = useFormik<Auth.Login.Params>({
     initialValues: {
       login: '',
       password: ''
@@ -50,8 +53,8 @@ const AuthFormPresenter: React.FC<Props> = ({loading, errorText, appLogin}) => {
     submitForm().catch()
   }
 
-  return(
-    <form className={b()}>
+  return (
+    <form className={b({})}>
       <h2 className={b('title')}>Авторизация</h2>
       <Input
         name={'login'}
@@ -73,9 +76,11 @@ const AuthFormPresenter: React.FC<Props> = ({loading, errorText, appLogin}) => {
         htmlType={InputType.Password}
       />
       {!!errorText && <p className={b('error')}>{errorText}</p>}
-      <div>
-        <Button text={'Регистрация'} disabled={loading}/>
-        <Button text={'Войти'} onClick={handlerSubmit} disabled={loading}/>
+      <div className={b('btn-container')}>
+        <Link to={'/registration'} className={b('link')}>
+          <Button className={b('button')} text={'Регистрация'} disabled={loading}/>
+        </Link>
+        <Button className={b('button')} text={'Войти'} onClick={handlerSubmit} disabled={loading}/>
       </div>
     </form>
   )
