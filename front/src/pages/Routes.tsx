@@ -7,6 +7,7 @@ import { AuthPage } from './AuthPage/AuthPage'
 import { CatalogPage } from './CatalogPage/CatalogPage'
 import { Error404 } from './Error404/Error404'
 import {RegistrationPage} from "./RegistrationPage/RegistrationPage";
+import {Ref} from "./Ref/Ref";
 
 interface Props {
 }
@@ -19,7 +20,7 @@ export const Routes: React.FC<Props> = () => {
       <Page path={'/registration'} layout={AuthLayout} component={RegistrationPage} />
       <Page exact secured path={'/catalog'} component={CatalogPage} />
       <Page secured path={'/about'} component={AboutPage} />
-      <Page exact secured path={'/ref'} component={() => 'Справочники'} />
+      <Page exact secured path={'/ref'} component={Ref} />
       <Page secured path={'/ref/authors'} component={() => 'Авторы'} />
       <Page secured path={'/ref/genre'} component={() => 'Жанры'} />
       <Page secured path={'/ref/language'} component={() => 'Языки'} />

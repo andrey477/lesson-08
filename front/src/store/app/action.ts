@@ -1,11 +1,11 @@
 import {AppState} from "./types";
 import {AppAction} from "./AppAction";
 import {App} from "../../types/app";
-import {apiAuthLogin} from "../../api/auth";
+import {apiAuthLogin, apiAuthLogout} from "../../api/auth";
 import {User} from "../../types/user";
-import {dispatch} from "jest-circus/build/state";
 import {apiUserCreate} from "../../api/user";
 import {browserHistory} from "../../browserHistory";
+import {dispatch} from "jest-circus/build/state";
 
 const appFetch = (): AppState.Action.Fetch => ({
   type: AppAction.Fetch
@@ -24,6 +24,10 @@ const appFetchError = (payload: string): AppState.Action.FetchError => ({
 const appFetchRegisterSuccess = (payload: User.Data): AppState.Action.FetchRegisterSuccess => ({
   type: AppAction.FetchRegisterSuccess,
   payload
+})
+
+const appFetchLogout = (): AppState.Action.FetchLogout => ({
+  type: AppAction.FetchLogout
 })
 
 export const appActions: AppState.ActionThunk = {
@@ -48,6 +52,17 @@ export const appActions: AppState.ActionThunk = {
     }
     catch (err) {
       dispatch(appFetchError('Ошибка регистрации'))
+    }
+  },
+  appLogout: () => async (dispatch) => {
+    try {
+      await apiAuthLogout()
+    }
+    catch (err) {
+      console.log(err)
+    }
+    finally {
+      dispatch(appFetchLogout())
     }
   }
 }

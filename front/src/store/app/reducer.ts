@@ -37,6 +37,10 @@ export const appReducer: Reducer<AppState.State, AppState.Action.All> = (state= 
         loading: false,
         user: action.payload
       }
+    case AppAction.FetchLogout:
+      return {
+        ...initState
+      }
     default:
       return state
   }

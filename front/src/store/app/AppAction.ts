@@ -3,4 +3,5 @@ export enum AppAction {
   FetchSuccess = 'app/FetchSuccess',
   FetchError = 'app/FetchError',
   FetchRegisterSuccess = 'app/FetchRegisterSuccess',
+  FetchLogout = 'app/FetchLogout'
 }
