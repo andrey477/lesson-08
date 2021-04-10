@@ -21,10 +21,6 @@ const appFetchError = (payload: string): AppState.Action.FetchError => ({
   payload
 })
 
-const appFetchRegisterSuccess = (payload: User.Data): AppState.Action.FetchRegisterSuccess => ({
-  type: AppAction.FetchRegisterSuccess,
-  payload
-})
 
 const appFetchLogout = (): AppState.Action.FetchLogout => ({
   type: AppAction.FetchLogout
@@ -41,17 +37,6 @@ export const appActions: AppState.ActionThunk = {
     }
     catch (err) {
       dispatch(appFetchError('Ошибка авторизации'))
-    }
-  },
-  appRegister: params => async (dispatch) => {
-    dispatch(appFetch())
-
-    try {
-      const user = await apiUserCreate(params)
-      dispatch(appFetchRegisterSuccess(user))
-    }
-    catch (err) {
-      dispatch(appFetchError('Ошибка регистрации'))
     }
   },
   appLogout: () => async (dispatch) => {

@@ -1,0 +1,5 @@
+:root {
+  --book-item-bg: var(--light-blue-color);
+  --book-item-color: var(--dark-blue-color);
+  --book-item-border-color: var(--dark-blue-color);
+}

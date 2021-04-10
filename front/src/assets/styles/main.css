@@ -1,11 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Chango&family=Roboto&display=swap');
-
-:root {
-  --ff-chango: 'Chango';
-  --ff-roboto: 'Roboto';
-  --blue-color: #26A9E0;
-  --dark-blue-color: #1b75bb;
-}
+@import "colors.css";
+@import "theme.css";
 
 body {
   margin: 0;
