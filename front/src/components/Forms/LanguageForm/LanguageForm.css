@@ -1,0 +1,12 @@
+.language-form {
+  &__btn {
+    display: block;
+    padding: 12px;
+    margin-left: auto;
+    border: 2px solid var(--dark-blue-color);
+    border-radius: 5px;
+    background-color: #FFFFFF;
+    font-size: 16px;
+    color: var(--dark-blue-color);
+  }
+}

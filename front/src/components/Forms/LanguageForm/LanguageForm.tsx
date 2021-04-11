@@ -6,6 +6,7 @@ import {useFormik} from "formik";
 import {Input} from "../../Input/Input";
 import {Button} from "../../Button/Button";
 import {apiLanguageCreate, apiLanguageUpdate} from "../../../api/language";
+import './LanguageForm.css'
 
 interface Props {
   data: Language.Data | null
@@ -65,7 +66,7 @@ export const LanguageForm: React.FC<Props> = ({data}) => {
         value={values.name}
         className={b('input')}
         defaultValue={values.name}
-        // placeholder={'Введите язык:'}
+        placeholder={'Введите язык:'}
       />
       <Button
         text={!!data ? 'Сохранить' : 'Создать'}

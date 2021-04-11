@@ -4,8 +4,9 @@ import block from "bem-cn";
 import {LanguageForm} from "../../components/Forms/LanguageForm/LanguageForm";
 import {BasePageProps} from "../../types/base";
 import {useLanguageById} from "../../hooks/useLanguageById";
+import {PageContainer} from "../../components/PageContainer/PageContainer";
 
-interface Props extends BasePageProps<{id?: string}>{
+interface Props extends BasePageProps<{ id?: string }> {
 
 }
 
@@ -16,13 +17,15 @@ export const LanguagePageUpdate: React.FC<Props> = ({match}) => {
     return match.params.id ? +match.params.id : undefined
   }, [match])
 
-  const { data, loading, setId } = useLanguageById(id)
+  const {data, loading, setId} = useLanguageById(id)
 
-  return(
-    <div className={b()}>
-      <LanguageForm
-        data={data}
-      />
-    </div>
+  return (
+    <PageContainer>
+      <div className={b()}>
+        <LanguageForm
+          data={data}
+        />
+      </div>
+    </PageContainer>
   )
 }
