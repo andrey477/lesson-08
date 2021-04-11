@@ -29,7 +29,6 @@ interface OwnProps {
 type Props = OwnProps & StateProps & DispatchProps
 
 const b = block('auth-form')
-const forms = block('forms')
 
 const schema: Yup.SchemaOf<Auth.Login.Params> = Yup.object().shape(({
   login: Yup.string().required(),

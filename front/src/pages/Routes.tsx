@@ -8,6 +8,8 @@ import { CatalogPage } from './CatalogPage/CatalogPage'
 import { Error404 } from './Error404/Error404'
 import {RegistrationPage} from "./RegistrationPage/RegistrationPage";
 import {Ref} from "./Ref/Ref";
+import {LanguagePageCreate} from "./LanguagePageCreate/LanguagePageCreate";
+import {LanguagePageUpdate} from "./LanguagePageUpdate/LanguagePageUpdate";
 
 interface Props {
 }
@@ -23,7 +25,9 @@ export const Routes: React.FC<Props> = () => {
       <Page exact secured path={'/ref'} component={Ref} />
       <Page secured path={'/ref/authors'} component={() => 'Авторы'} />
       <Page secured path={'/ref/genre'} component={() => 'Жанры'} />
-      <Page secured path={'/ref/language'} component={() => 'Языки'} />
+      <Page exact secured path={'/ref/languages'} component={() => 'Языки'} />
+      <Page exact secured path={'/ref/languages/create' } component={LanguagePageCreate}/>
+      <Page exact secured path={'/ref/languages/:id/update'} component={LanguagePageUpdate}/>
       <Page secured path={'/ref/publisher'} component={() => 'Издательства'} />
       <Page path={'*'} layout={AuthLayout} component={Error404} />
     </Switch>

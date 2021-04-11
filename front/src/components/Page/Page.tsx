@@ -32,11 +32,16 @@ export const PagePresenter: React.FC<Props> = ({
   }
 
   return (
-    <Route exact={exact} path={path}>
-      <Layout>
-        <Component />
-      </Layout>
-    </Route>
+    <Route
+      exact={exact}
+      path={path}
+      render={(props) => (
+          <Layout>
+            <Component {...props}/>
+          </Layout>
+      )}
+    />
+
   )
 }
 
