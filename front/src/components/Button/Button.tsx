@@ -5,7 +5,6 @@ import './Button.css'
 import {emptyFunction} from "../../utils";
 
 interface Props extends BaseComponents {
-  text: string;
   onClick?: MouseEventHandler<HTMLButtonElement>;
   disabled?: boolean;
   htmlType?: 'submit' | 'reset' | 'button';
@@ -15,10 +14,10 @@ const b = block('button')
 
 export const Button: React.FC<Props> = ({
   className = '',
-  text,
   onClick = emptyFunction,
   disabled = false,
-  htmlType = 'button'
+  htmlType = 'button',
+  children
 }) => {
   return (
     <button
@@ -27,7 +26,7 @@ export const Button: React.FC<Props> = ({
       disabled={disabled}
       type={htmlType}
     >
-      <span>{text}</span>
+      {children}
     </button>
   )
 }

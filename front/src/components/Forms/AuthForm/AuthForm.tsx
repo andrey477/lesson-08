@@ -13,6 +13,7 @@ import {RootState} from "../../../store/types";
 import {appActions} from "../../../store/app/action";
 import {InputType} from "../../Input/InputType";
 import '../Forms.css'
+import {Spinner} from "../../Spinner/Spinner";
 
 interface StateProps {
   loading: boolean;
@@ -77,9 +78,14 @@ const AuthFormPresenter: React.FC<Props> = ({loading, errorText, appLogin}) => {
       {!!errorText && <p className={b('error')}>{errorText}</p>}
       <div className={b('btn-container')}>
         <Link to={'/registration'} className={b('link')}>
-          <Button className={b('button')} text={'Регистрация'} disabled={loading}/>
+          <Button className={b('button')} disabled={loading}>
+            Регистрация
+          </Button>
         </Link>
-        <Button className={b('button')} text={'Войти'} onClick={handlerSubmit} disabled={loading}/>
+        <Button className={b('button')}  onClick={handlerSubmit} disabled={loading}>
+          {!!loading && <Spinner/>}
+          <span>Войти</span>
+        </Button>
       </div>
     </form>
   )

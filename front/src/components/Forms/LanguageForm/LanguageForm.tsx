@@ -7,6 +7,7 @@ import {Input} from "../../Input/Input";
 import {Button} from "../../Button/Button";
 import {apiLanguageCreate, apiLanguageUpdate} from "../../../api/language";
 import './LanguageForm.css'
+import {Spinner} from "../../Spinner/Spinner";
 
 interface Props {
   data: Language.Data | null
@@ -52,10 +53,6 @@ export const LanguageForm: React.FC<Props> = ({data}) => {
 
   console.log(data)
 
-  if (loading) {
-    return <p>Loading</p>
-  }
-
   return (
     <form className={b()}>
       <Input
@@ -69,10 +66,12 @@ export const LanguageForm: React.FC<Props> = ({data}) => {
         placeholder={'Введите язык:'}
       />
       <Button
-        text={!!data ? 'Сохранить' : 'Создать'}
         className={b('btn')}
         onClick={handlerSubmit}
-      />
+      >
+        {loading && <Spinner/>}
+        {!!data ? 'Сохранить' : 'Создать'}
+      </Button>
     </form>
   )
 }

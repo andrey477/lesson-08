@@ -1,0 +1,6 @@
+.ref {
+  &__spinner-container {
+    display: flex;
+    justify-content: center;
+  }
+}

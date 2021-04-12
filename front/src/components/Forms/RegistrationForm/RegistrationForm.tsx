@@ -6,7 +6,7 @@ import {connect, MapDispatchToProps, MapStateToProps} from "react-redux";
 import {RootState} from "../../../store/types";
 import {appActions} from "../../../store/app/action";
 import {useFormik} from "formik";
-import React, {MouseEventHandler} from "react";
+import React, {MouseEventHandler, useState} from "react";
 import {Link} from 'react-router-dom'
 import {Input} from "../../Input/Input";
 import {InputType} from "../../Input/InputType";
@@ -14,6 +14,7 @@ import {Button} from "../../Button/Button";
 import './RegistrationForm.css'
 import {apiUserCreate} from "../../../api/user";
 import {browserHistory} from "../../../browserHistory";
+import {Spinner} from "../../Spinner/Spinner";
 
 interface Props {
 
@@ -29,6 +30,7 @@ const schema: Yup.SchemaOf<User.Create.Param> = Yup.object().shape(({
 }))
 
 export const RegistrationForm: React.FC<Props> = () => {
+  const [loading, setLoading] = useState<boolean>(false)
   const {errors, values, submitForm, handleChange} = useFormik<User.Create.Param>({
     initialValues: {
       email: '',
@@ -39,11 +41,15 @@ export const RegistrationForm: React.FC<Props> = () => {
     validationSchema: schema,
     onSubmit: async (fields) => {
       try {
+        setLoading(true)
         await apiUserCreate(fields)
         browserHistory.push('/auth')
       }
       catch (err) {
         console.log(err)
+      }
+      finally {
+        setLoading(false)
       }
     }
   })
@@ -92,9 +98,14 @@ export const RegistrationForm: React.FC<Props> = () => {
       />
       <div className={b('btn-container')}>
         <Link to={'/auth'} className={b('link')}>
-          <Button className={b('button')} text={'Войти'}/>
+          <Button className={b('button')}>
+            Войти
+          </Button>
         </Link>
-        <Button className={b('button')} text={'Зарегистрироваться'} onClick={handlerSubmit}/>
+        <Button className={b('button')} onClick={handlerSubmit}>
+          {!!loading && <Spinner/>}
+          <span>Зарегистрироваться</span>
+        </Button>
       </div>
     </form>
   )

@@ -26,9 +26,10 @@ const MainLayoutPresenter: React.FC<Props> = ({appLogout, children}) => {
   const btnLogout = useCallback(() => (
     <Button
       className={b('button')}
-      text={'Выход'}
       onClick={() => appLogout()}
-    />
+    >
+      Выход
+    </Button>
   ), [])
 
   return (
