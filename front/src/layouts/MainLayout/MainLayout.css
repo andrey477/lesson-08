@@ -1,4 +1,7 @@
 .main-layout {
+  overflow: hidden;
+  height: 100%;
+
   &__button {
     color: #fff;
     background-color: var(--dark-blue-color);

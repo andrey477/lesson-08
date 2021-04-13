@@ -7,6 +7,7 @@ import {connect, MapDispatchToProps} from "react-redux";
 import {AppState} from "../../store/app/types";
 import {appActions} from "../../store/app/action";
 import {Button} from "../../components/Button/Button";
+import {Footer} from "../../components/Footer/Footer";
 
 interface OwnProps {
 }
@@ -41,6 +42,7 @@ const MainLayoutPresenter: React.FC<Props> = ({appLogout, children}) => {
       <main className={b('main')}>
         {children}
       </main>
+      <Footer/>
     </div>
   )
 }

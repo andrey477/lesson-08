@@ -2,6 +2,7 @@ import block from 'bem-cn'
 import React from 'react'
 import { Header } from '../../components/Header/Header'
 import './AuthLayout.css'
+import {Footer} from "../../components/Footer/Footer";
 
 interface Props {
 }
@@ -15,6 +16,7 @@ export const AuthLayout: React.FC<Props> = (props) => {
       <main className={b('main')}>
         {props.children}
       </main>
+      <Footer/>
     </div>
   )
 }
