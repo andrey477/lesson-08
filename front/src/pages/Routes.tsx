@@ -10,6 +10,7 @@ import {RegistrationPage} from "./RegistrationPage/RegistrationPage";
 import {Ref} from "./Ref/Ref";
 import {LanguagePageCreate} from "./LanguagePageCreate/LanguagePageCreate";
 import {LanguagePageUpdate} from "./LanguagePageUpdate/LanguagePageUpdate";
+import {LanguagePageAll} from "./LanguagePageAll/LanguagePageAll";
 
 interface Props {
 }
@@ -25,7 +26,7 @@ export const Routes: React.FC<Props> = () => {
       <Page exact secured path={'/ref'} component={Ref} />
       <Page secured path={'/ref/authors'} component={() => 'Авторы'} />
       <Page secured path={'/ref/genre'} component={() => 'Жанры'} />
-      <Page exact secured path={'/ref/languages'} component={() => 'Языки'} />
+      <Page exact secured path={'/ref/languages'} component={LanguagePageAll} />
       <Page exact secured path={'/ref/languages/create' } component={LanguagePageCreate}/>
       <Page exact secured path={'/ref/languages/:id/update'} component={LanguagePageUpdate}/>
       <Page secured path={'/ref/publisher'} component={() => 'Издательства'} />
