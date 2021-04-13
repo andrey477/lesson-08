@@ -10,7 +10,13 @@ import {
   languageGetAll,
   languageUpdate
 } from './controller/LanguageController'
-import { publisherCreate, publisherDelete, publisherGetAll, publisherUpdate } from './controller/PublisherController'
+import {
+  publisherById,
+  publisherCreate,
+  publisherDelete,
+  publisherGetAll,
+  publisherUpdate
+} from './controller/PublisherController'
 import { userCreate } from './controller/UserController'
 import { authMiddleware } from './middleware/authMiddleware'
 import { App } from './types/app'
@@ -168,6 +174,12 @@ export const Routes: App.Route[] = [
     path: '/publishers/:id',
     middleware: [authMiddleware],
     action: publisherDelete
+  },
+  {
+    method: 'get',
+    path: '/publishers/:id',
+    middleware: [authMiddleware],
+    action: publisherById
   },
   {
     method: 'post',

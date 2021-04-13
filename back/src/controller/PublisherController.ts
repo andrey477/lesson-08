@@ -9,6 +9,7 @@ import {
 } from '../schema/publisher'
 import { App } from '../types/app'
 import { Publisher } from '../types/publisher'
+import {AppAction} from "../../../front/src/store/app/AppAction";
 
 const publisherRepository = container.resolve<Publisher.Repository>(Repository.Publisher)
 
@@ -56,3 +57,14 @@ export const publisherDelete: App.Action<Publisher.Delete.Request> = async (req,
 
   res.status(204).json()
 }
+
+export const publisherById: App.Action = async (req, res) => {
+  const publisher = await publisherRepository.getById(req.params.id)
+  res.json(publisher)
+}
+
+/*
+  export const languageById: App.Action = async (req, res) => {
+  const language = await languageRepository.getById(req.params.id)
+  res.json(language)
+}*/
