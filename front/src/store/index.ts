@@ -12,12 +12,12 @@ const config: PersistConfig<RootState.State> = {
   key: 'catalog',
   storage
 }
+const composeEnhancer = window?.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ ?? compose;
 
 const persistedReducer = persistReducer(config, rootReducer)
 
-export const store = createStore(persistedReducer, compose(
-  applyMiddleware(thunk),
-  window?.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+export const store = createStore(persistedReducer, composeEnhancer(
+  applyMiddleware(thunk)
 ))
 
 export const persistor = persistStore(store)

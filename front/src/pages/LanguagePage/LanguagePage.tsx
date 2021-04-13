@@ -18,7 +18,7 @@ export const LanguagePage: React.FC<Props> = ({match}) => {
   if (loading) {
     return <Spinner/>
   }
-  console.log(loading)
+
   return (
     <div className={b()}>
       <PageItem
