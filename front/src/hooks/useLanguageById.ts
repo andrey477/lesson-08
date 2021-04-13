@@ -23,7 +23,7 @@ export const useLanguageById = (defaultId?: number): UseLanguageById => {
     apiLanguageGetById(id)
       .then(setData)
       .catch(console.error)
-      .finally(() => setLoading(true))
+      .finally(() => setLoading(false))
   }, [id])
 
   return {

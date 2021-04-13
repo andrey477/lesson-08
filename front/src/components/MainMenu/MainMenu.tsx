@@ -14,6 +14,7 @@ export const MainMenu: React.FC<Props> = () => {
       <div className={b('container')}>
         <Link to="/catalog" className={b('link')}>Каталог</Link>
         <Link to="/ref" className={b('link')}>Справочники</Link>
+        <Link to={'/ref/languages'} className={b('link')}>Языки</Link>
       </div>
     </nav>
   )

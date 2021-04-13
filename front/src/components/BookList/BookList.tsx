@@ -23,6 +23,7 @@ export const BookList: React.FC<Props> = ({books, loading}) => {
           title={book.title}
           description={book.description}
           year={book.year}
+          key={book.id}
         />
       ))}
     </div>

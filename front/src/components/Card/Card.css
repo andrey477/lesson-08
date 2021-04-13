@@ -1,0 +1,14 @@
+.card {
+  font-size: 24px;
+  text-decoration: none;
+  border: 1px solid var(--dark-blue-color);
+  padding: 12px;
+  border-radius: 12px;
+  margin-top: 20px;
+  text-align: center;
+
+
+  &__link {
+    color: var(--dark-blue-color)
+  }
+}

@@ -1,5 +1,6 @@
 import React from "react";
 import block from "bem-cn";
+import './CardList.css'
 
 interface Props<T> {
   data: T[],

@@ -8,6 +8,7 @@ import {Button} from "../../Button/Button";
 import {apiLanguageCreate, apiLanguageUpdate} from "../../../api/language";
 import './LanguageForm.css'
 import {Spinner} from "../../Spinner/Spinner";
+import {browserHistory} from "../../../browserHistory";
 
 interface Props {
   data: Language.Data | null
@@ -29,17 +30,19 @@ export const LanguageForm: React.FC<Props> = ({data}) => {
     onSubmit: async (field) => {
       try {
         setLoading(true)
+        let id: number
         if (data) {
+          id = data.id
           const params = {...data, ...field}
           await apiLanguageUpdate(params)
         } else {
-          await apiLanguageCreate(field)
+          const res = await apiLanguageCreate(field)
+          id = res.id
         }
-      }
-      catch (err) {
+        browserHistory.push(`/ref/languages/${id}`)
+      } catch (err) {
         console.log(err)
-      }
-      finally {
+      } finally {
         setLoading(false)
       }
 

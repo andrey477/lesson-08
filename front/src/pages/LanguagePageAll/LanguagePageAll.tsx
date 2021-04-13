@@ -3,6 +3,9 @@ import block from "bem-cn";
 import {useLanguageGetAll} from "../../hooks/useLanguageGetAll";
 import {Language} from "../../types/language";
 import {CardList} from "../../components/CardList/CardList";
+import {Spinner} from "../../components/Spinner/Spinner";
+import {Card} from "../../components/Card/Card";
+import './LanguagePageAll.css'
 
 interface Props {
 
@@ -16,10 +19,16 @@ export const LanguagePageAll: React.FC<Props> = () => {
   const renderNode = (item: Language.Data, index: number): React.ReactNode => {
     return (
       <div className={b('item')}>
-        <span>{index}</span>
-        <span>{item.name}</span>
+        <Card
+          title={item.name}
+          path={`/ref/languages/${item.id}`}
+        />
       </div>
     )
+  }
+
+  if (loading) {
+    return <Spinner/>
   }
 
   return (
