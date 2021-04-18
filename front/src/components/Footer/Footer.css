@@ -1,11 +1,12 @@
 .footer {
-  position: absolute;
-  bottom: 0;
+  position: relative;
   background: var(--blue-color);
-  width: 100%;
+  width: calc(100% - 16px);
   padding: 16px 8px 12px;
   display: flex;
   justify-content: center;
+  flex: 0 0 auto;
+  margin-top: 32px;
 
   &__text {
     font-size: 20px;
