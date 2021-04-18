@@ -5,6 +5,7 @@ import {LanguageForm} from "../../components/Forms/LanguageForm/LanguageForm";
 import {BasePageProps} from "../../types/base";
 import {useLanguageById} from "../../hooks/useLanguageById";
 import {PageContainer} from "../../components/PageContainer/PageContainer";
+import {Spinner} from "../../components/Spinner/Spinner";
 
 interface Props extends BasePageProps<{ id?: string }> {
 
@@ -18,6 +19,10 @@ export const LanguagePageUpdate: React.FC<Props> = ({match}) => {
   }, [match])
 
   const {data, loading, setId} = useLanguageById(id)
+
+  if (loading) {
+    return <Spinner/>
+  }
 
   return (
     <PageContainer>

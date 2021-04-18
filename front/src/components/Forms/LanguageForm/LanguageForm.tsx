@@ -54,8 +54,6 @@ export const LanguageForm: React.FC<Props> = ({data}) => {
     submitForm().catch()
   }
 
-  console.log(data)
-
   return (
     <form className={b()}>
       <Input
